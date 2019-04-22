@@ -32,13 +32,14 @@ public class MainApplication extends Application {
         super.onCreate();
         initPushClient();
 
+        //RegisterUser
         String userId = chabok.getUserId();
         if ( userId != null){
             chabok.register(userId);
         } else {
             chabok.registerAsGuest();
         }
-        
+
         //starting second service
         Intent launch = new Intent(this,SecondService.class);
         startService(launch);
