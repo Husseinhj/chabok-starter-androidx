@@ -32,6 +32,13 @@ public class MainApplication extends Application {
         super.onCreate();
         initPushClient();
 
+        String userId = chabok.getUserId();
+        if ( userId != null){
+            chabok.register(userId);
+        } else {
+            chabok.registerAsGuest();
+        }
+        
         //starting second service
         Intent launch = new Intent(this,SecondService.class);
         startService(launch);
@@ -44,13 +51,12 @@ public class MainApplication extends Application {
             chabok = AdpPushClient.init(
                     getApplicationContext(),
                     MainActivity.class,
-                    "adp-nms-push/845225163503",
-                    "e2100f0d7e071c7450f04e530bda746da2fc493b",
-                    "adp",
-                    "test"
+                    "chabok-starter/839879285435",
+                    "70df4ae2e1fd03518ce3e3b21ee7ca7943577749",
+                    "chabok-starter",
+                    "chabok-starter"
             );
             chabok.setDevelopment(true);
-            chabok.register("HUSSEIN_TEST_SERIVCE");
         }
     }
 
